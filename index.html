@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Scientist - Panos Kabasis</title>
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             color: white;
             text-align: center;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
-        /* General Styling */
         header {
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         header img {
@@ -32,6 +36,10 @@
             font-size: 2.5rem;
         }
 
+        header h2 {
+            font-size: 1.5rem;
+        }
+
         .hotlink {
             display: inline-block;
             margin-top: 20px;
@@ -40,17 +48,18 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .hotlink:hover {
             background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
         }
 
         footer {
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            position: fixed;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: relative;
             width: 100%;
             bottom: 0;
         }
@@ -78,12 +87,61 @@
             background-image: url('istockphoto-1191680108-612x612.jpg');
         }
 
+        .parallax-section h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 1px 1px 5px black;
+        }
+
         /* Regular Content Sections */
         .content-section {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 50px 20px;
             color: white;
             text-align: center;
+        }
+
+        .content-section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header img {
+                width: 100px;
+                height: 100px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header h2 {
+                font-size: 1.2rem;
+            }
+
+            .hotlink {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
+            .parallax-section h1 {
+                font-size: 2rem;
+            }
+
+            .content-section p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -101,8 +159,8 @@
 
     <!-- Content Section 1 -->
     <div class="content-section">
-        <p>This is a regular content section. Scroll down to see more about me and my projects.</p>
-        <a class="hotlink" href="Kabasis_panos_AM_me2310.pdf" target="_blank">View My PDF Resume</a>
+        <p>Explore my projects, achievements, and career as a Data Scientist.</p>
+        <a class="hotlink" href="Kabasis_panos_AM_me2310.pdf" target="_blank" download>Download My Resume</a>
     </div>
 
     <!-- Parallax Section 2 -->
@@ -112,7 +170,7 @@
 
     <!-- Content Section 2 -->
     <div class="content-section">
-        <p>Thank you for visiting my portfolio. More updates will be added soon!</p>
+        <p>Thank you for visiting my portfolio. Stay tuned for exciting updates!</p>
     </div>
 
     <footer>
