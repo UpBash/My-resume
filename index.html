@@ -3,75 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Resume</title>
+    <title>Data Scientist - Panos Kabasis</title>
     <style>
-        /* Basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Background styling */
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #fff;
-            background: url('Innovative-Method-Offers-Effective-Resolution-for-a-Multitude-of-Applications-Involving-Partial-Differential-Equations-cover-1920x1024.jpg') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('mathematics-formula-equation-mathematical-notation-mathematics-0b7a6cdd8f8a7acca9dd458484210277.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
             text-align: center;
+        }
+
+        header {
             padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
         }
 
-        /* Resume card styling */
-        .resume {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
         }
 
-        /* Profile picture */
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            border: 3px solid #fff;
+        main {
+            padding: 50px 20px;
         }
 
-        h1, h2 {
-            color: #ffcc00;
-        }
-
-        a {
-            color: #ffcc00;
+        .hotlink {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
             text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .hotlink:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <div class="resume">
-        <img src="DSC_0124ivol2.jpg" alt="Profile Picture" class="profile-pic">
-        <h1>John Doe</h1>
-        <h2>Software Engineer</h2>
-        <p>
-            Hello! Welcome to my resume site. Below, you'll find links to some of my work and a downloadable version of my resume.
-        </p>
-        <ul>
-            <li><a href="work-sample1.pdf" target="_blank">Work Sample 1</a></li>
-            <li><a href="work-sample2.pdf" target="_blank">Work Sample 2</a></li>
-            <li><a href="resume.pdf" target="_blank">Download My Resume</a></li>
-        </ul>
-        <p>If you have any questions, feel free to <a href="mailto:john.doe@example.com">contact me</a>.</p>
-    </div>
+    <header>
+        <h1>Panos Kabasis</h1>
+        <h2>Data Scientist</h2>
+    </header>
+
+    <main>
+        <p>Welcome to my portfolio! Explore my projects, achievements, and career as a Data Scientist.</p>
+        <a class="hotlink" href="Kabasis_panos_AM_me2310.pdf" target="_blank">View My PDF Resume</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Panos Kabasis. All rights reserved.</p>
+    </footer>
 </body>
 </html>
