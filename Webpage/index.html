@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Scientist - Panos Kabasis</title>
+    <style>
+        /* General Styling */
+        body {
+            background-color: rgb(26, 25, 25);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: rgb(32, 32, 32);
+            text-align: center;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        header {
+            position: relative;
+            padding: 40px 20px;
+            color: white;
+            text-align: center;
+            background-image: url('c12867e0c1900dc5d8c1c5f714bc5397.jpg'); /* Background for header */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-top: 10px;
+        }
+
+        header h1 {
+            margin: 10px 0;
+            font-size: 2.5rem;
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+        }
+
+        .hotlink {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hotlink:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        footer {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p, footer a {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 10px 0;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            transform: scale(1.2);
+            color: #0073e6;
+        }
+
+        /* Parallax Sections */
+        .parallax-section {
+            position: relative;
+            height: 50vh; /* Reduced height */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #section1 {
+            background-image: url('c12867e0c1900dc5d8c1c5f714bc5397.jpg');
+        }
+
+        #section2 {
+            background-image: url('—Pngtree—a futuristic mesh of data_6299836.jpg');
+        }
+
+        .parallax-section h1 {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 1px 1px 5px black;
+        }
+
+        /* Button Grid */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            background-color: rgb(36, 36, 36); /* Dark gray background */
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .grid-button {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 1.2rem;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Download Buttons with Background Animation */
+        .animated-button {
+            position: relative;
+            display: inline-block;
+            width: 300px;
+            height: 50px;
+            margin: 10px auto;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            text-transform: uppercase;
+            text-decoration: none;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .animated-button:hover {
+            transform: scale(1.1);
+        }
+
+        .animated-button span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .animated-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-image: url('mathematics-formula-equation-mathematical-notation-mathematics-0b7a6cdd8f8a7acca9dd458484210277.png');
+            background-size: cover;
+            transition: left 0.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .animated-button:hover::before {
+            left: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header img {
+                width: 100px;
+                height: 100px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header h2 {
+                font-size: 1.2rem;
+            }
+
+            .hotlink {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
+            .parallax-section h1 {
+                font-size: 2rem;
+            }
+
+            .button-grid {
+                grid-template-columns: 1fr;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="DSC_0124ivol2.jpg" alt="Profile Picture">
+        <h1>Panos Kabasis</h1>
+        <h2>Data Scientist</h2>
+    </header>
+
+    <!-- Parallax Section 1 -->
+    <div class="parallax-section" id="section1">
+        <h1>Welcome to My Portfolio</h1>
+    </div>
+
+    <!-- Download Buttons -->
+    <div>
+        <a class="animated-button" href="neural-networks.pdf" download>
+            <span>Neural Networks: Object Detection</span>
+        </a>
+        <a class="animated-button" href="machine-learning.pdf" download>
+            <span>Machine Learning</span>
+        </a>
+    </div>
+
+    <!-- Button Grid 1 -->
+    <div class="button-grid">
+        <div class="grid-button">Random Topic 1</div>
+        <div class="grid-button">Random Topic 2</div>
+        <div class="grid-button">Random Topic 3</div>
+        <div class="grid-button">Random Topic 4</div>
+    </div>
+
+    <!-- Parallax Section 2 -->
+    <div class="parallax-section" id="section2">
+        <h1>Immersive Data Science Experience</h1>
+    </div>
+
+    <!-- Button Grid 2 -->
+    <div class="button-grid">
+        <div class="grid-button">Random Topic A</div>
+        <div class="grid-button">Random Topic B</div>
+        <div class="grid-button">Random Topic C</div>
+        <div class="grid-button">Random Topic D</div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Panos Kabasis. All rights reserved.</p>
+        <p>GitHub: <a href="https://github.com/upbash" target="_blank">https://github.com/upbash</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/panos-kabasis" target="_blank">https://linkedin.com/in/panos-kabasis</a></p>
+        <p>Address: 123 Data Street, Science City, Planet Earth</p>
+        <div class="social-icons">
+            <a href="https://github.com/upbash" target="_blank">&#x1F4BB;</a>
+            <a href="https://linkedin.com/in/panos-kabasis" target="_blank">&#x1F465;</a>
+            <a href="mailto:panos@example.com">&#x2709;</a>
+        </div>
+    </footer>
+</body>
+</html>
