@@ -9,14 +9,11 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('mathematics-formula-equation-mathematical-notation-mathematics-0b7a6cdd8f8a7acca9dd458484210277.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
             color: white;
             text-align: center;
         }
 
+        /* General Styling */
         header {
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.7);
@@ -33,10 +30,6 @@
         header h1 {
             margin: 10px 0;
             font-size: 2.5rem;
-        }
-
-        main {
-            padding: 50px 20px;
         }
 
         .hotlink {
@@ -66,6 +59,32 @@
             margin: 0;
             font-size: 0.9rem;
         }
+
+        /* Parallax Sections */
+        .parallax-section {
+            position: relative;
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #section1 {
+            background-image: url('c12867e0c1900dc5d8c1c5f714bc5397.jpg');
+        }
+
+        #section2 {
+            background-image: url('istockphoto-1191680108-612x612.jpg');
+        }
+
+        /* Regular Content Sections */
+        .content-section {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 50px 20px;
+            color: white;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -75,10 +94,26 @@
         <h2>Data Scientist</h2>
     </header>
 
-    <main>
-        <p>Welcome to my portfolio! Explore my projects, achievements, and career as a Data Scientist.</p>
+    <!-- Parallax Section 1 -->
+    <div class="parallax-section" id="section1">
+        <h1>Welcome to My Portfolio</h1>
+    </div>
+
+    <!-- Content Section 1 -->
+    <div class="content-section">
+        <p>This is a regular content section. Scroll down to see more about me and my projects.</p>
         <a class="hotlink" href="Kabasis_panos_AM_me2310.pdf" target="_blank">View My PDF Resume</a>
-    </main>
+    </div>
+
+    <!-- Parallax Section 2 -->
+    <div class="parallax-section" id="section2">
+        <h1>Immersive Data Science Experience</h1>
+    </div>
+
+    <!-- Content Section 2 -->
+    <div class="content-section">
+        <p>Thank you for visiting my portfolio. More updates will be added soon!</p>
+    </div>
 
     <footer>
         <p>&copy; 2024 Panos Kabasis. All rights reserved.</p>
