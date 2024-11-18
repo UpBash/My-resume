@@ -5,37 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Resume</title>
     <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background styling */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
-            margin: 2em auto;
+            color: #fff;
+            background: url('Innovative-Method-Offers-Effective-Resolution-for-a-Multitude-of-Applications-Involving-Partial-Differential-Equations-cover-1920x1024.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background: #f9f9f9;
         }
+
+        /* Resume card styling */
+        .resume {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Profile picture */
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 3px solid #fff;
+        }
+
         h1, h2 {
-            color: #333;
+            color: #ffcc00;
         }
+
         a {
-            color: #007BFF;
+            color: #ffcc00;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>John Doe</h1>
-    <h2>Software Engineer</h2>
-    <p>Hello! Welcome to my resume site. Below, you'll find links to some of my work and a downloadable version of my resume.</p>
-    <ul>
-        <li><a href="work-sample1.pdf" target="_blank">Work Sample 1</a></li>
-        <li><a href="work-sample2.pdf" target="_blank">Work Sample 2</a></li>
-        <li><a href="resume.pdf" target="_blank">Download My Resume</a></li>
-    </ul>
-    <p>If you have any questions, feel free to <a href="mailto:john.doe@example.com">contact me</a>.</p>
+    <div class="resume">
+        <img src="DSC_0124ivol2.jpg" alt="Profile Picture" class="profile-pic">
+        <h1>John Doe</h1>
+        <h2>Software Engineer</h2>
+        <p>
+            Hello! Welcome to my resume site. Below, you'll find links to some of my work and a downloadable version of my resume.
+        </p>
+        <ul>
+            <li><a href="work-sample1.pdf" target="_blank">Work Sample 1</a></li>
+            <li><a href="work-sample2.pdf" target="_blank">Work Sample 2</a></li>
+            <li><a href="resume.pdf" target="_blank">Download My Resume</a></li>
+        </ul>
+        <p>If you have any questions, feel free to <a href="mailto:john.doe@example.com">contact me</a>.</p>
+    </div>
 </body>
 </html>
