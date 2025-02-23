@@ -12,6 +12,8 @@
             padding: 40px;
             color: #1a1a1a;
             text-align: left;
+            position: relative;
+            overflow: hidden;
         }
 
         header {
@@ -35,7 +37,7 @@
             margin-bottom: 20px;
         }
 
-        .download-links a {
+        .download-links a, .project-list p {
             display: block;
             font-size: 2rem;
             font-weight: bold;
@@ -44,12 +46,12 @@
             margin: 10px 0;
             border-bottom: 2px solid black;
             width: max-content;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .project-list {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-top: 20px;
+        .download-links a:hover, .project-list p:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
         .contact-info {
@@ -58,9 +60,20 @@
             padding-top: 20px;
             border-top: 3px solid black;
         }
+
+        /* Canvas Background for Mathematical Doodles */
+        #mathCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
+    <canvas id="mathCanvas"></canvas>
     <header>Panos Kabasis</header>
 
     <div class="section">
@@ -94,5 +107,33 @@
         <p>GitHub: <a href="https://github.com/upbash" target="_blank">github.com/upbash</a></p>
         <p>LinkedIn: <a href="https://linkedin.com/in/panos-kabasis" target="_blank">linkedin.com/in/panos-kabasis</a></p>
     </div>
+
+    <script>
+        // Doodly Mathematics Background Canvas
+        const canvas = document.getElementById("mathCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        function drawRandomMath() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(0,0,0,0.3)";
+            ctx.font = "16px Times New Roman";
+            
+            for (let i = 0; i < 30; i++) {
+                let x = Math.random() * canvas.width;
+                let y = Math.random() * canvas.height;
+                let equations = ["∫ f(x) dx", "E = mc²", "π ≈ 3.1416", "a² + b² = c²", "∂/∂x", "lim x→∞"];
+                let equation = equations[Math.floor(Math.random() * equations.length)];
+                ctx.fillText(equation, x, y);
+            }
+        }
+        
+        setInterval(drawRandomMath, 3000);
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
