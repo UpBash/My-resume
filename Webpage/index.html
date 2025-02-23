@@ -109,7 +109,7 @@
     </div>
 
     <script>
-        // Doodly Mathematics Background Canvas with Writing and Delayed Fading Effect
+        // Doodly Mathematics Background Canvas with Writing and Smooth Fading Effect
         const canvas = document.getElementById("mathCanvas");
         const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
@@ -120,35 +120,40 @@
             "∂u/∂t = Δu + u - u³ (Allen-Cahn)", "y = Wx + b", "model.fit(X, y)", "loss.backward()"
         ];
 
+        let drawnEquations = [];
+
         function drawEquation(equation, x, y) {
             let index = 0;
-            ctx.fillStyle = "rgba(0,0,0,0.5)";
+            let opacity = 1;
             ctx.font = "16px Times New Roman";
             
             function drawCharacter() {
                 if (index < equation.length) {
+                    ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`;
                     ctx.fillText(equation[index], x + index * 10, y);
                     index++;
                     setTimeout(drawCharacter, 50);
                 } else {
-                    setTimeout(() => fadeEquation(x, y, equation.length * 10), 8000);
+                    drawnEquations.push({ x, y, equation, opacity: 1, fadeDelay: 8000 });
                 }
             }
             drawCharacter();
         }
 
-        function fadeEquation(x, y, width) {
-            let opacity = 1;
-            function fade() {
-                ctx.clearRect(x, y - 16, width, 20);
-                ctx.fillStyle = `rgba(0,0,0,${opacity})`;
-                ctx.fillText(" ", x, y);
-                opacity -= 0.05;
-                if (opacity > 0) {
-                    setTimeout(fade, 50);
+        function fadeEquations() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawnEquations.forEach((eq, i) => {
+                if (eq.fadeDelay > 0) {
+                    eq.fadeDelay -= 50;
+                } else {
+                    eq.opacity -= 0.01;
                 }
-            }
-            fade();
+                ctx.fillStyle = `rgba(0, 0, 0, ${eq.opacity})`;
+                ctx.fillText(eq.equation, eq.x, eq.y);
+                if (eq.opacity <= 0) {
+                    drawnEquations.splice(i, 1);
+                }
+            });
         }
 
         function drawRandomMath() {
@@ -159,6 +164,8 @@
         }
 
         setInterval(drawRandomMath, 3000);
+        setInterval(fadeEquations, 50);
+
         window.addEventListener("resize", () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
