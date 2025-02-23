@@ -73,8 +73,8 @@
         .doc-options {
             display: none;
             position: absolute;
-            top: 30px;
-            left: 0;
+            top: 0;
+            left: 110%;
             flex-direction: column;
             gap: 5px;
             background: white;
@@ -153,6 +153,21 @@
                 </span>
             </p>
         </div>
+
+        <div class="section">
+            <div class="section-title">Projects</div>
+            <p>Machine Learning Research</p>
+            <p>Neural Networks</p>
+            <p>Data Engineering</p>
+            <p>AI & Optimization</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Contact</div>
+            <p>Contact: panos.kabasis@example.com | +30 123 456 7890</p>
+            <p>GitHub: <a href="https://github.com/upbash" target="_blank">github.com/upbash</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/panos-kabasis" target="_blank">linkedin.com/in/panos-kabasis</a></p>
+        </div>
     </div>
 
     <div class="profile-pic">
@@ -168,27 +183,6 @@
             document.getElementById("pdfViewer").style.display = "none";
             document.getElementById("pdfFrame").src = "";
         }
-
-        // Math Equations Canvas Generator
-        const canvas = document.getElementById("mathCanvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let equations = ["∫ f(x) dx", "E = mc²", "π ≈ 3.1416", "a² + b² = c²", "∂/∂x", "lim x→∞", "∂u/∂t = Δu + u - u³ (Allen-Cahn)", "y = Wx + b", "model.fit(X, y)", "loss.backward()"];
-
-        function drawRandomEquation() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-            ctx.font = "16px Times New Roman";
-            equations.forEach(() => {
-                let x = Math.random() * (canvas.width - 200);
-                let y = Math.random() * (canvas.height - 50) + 30;
-                let equation = equations[Math.floor(Math.random() * equations.length)];
-                ctx.fillText(equation, x, y);
-            });
-        }
-        setInterval(drawRandomEquation, 3000);
     </script>
 </body>
 </html>
