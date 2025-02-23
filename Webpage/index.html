@@ -66,10 +66,6 @@
             position: relative;
         }
 
-        .document:hover .doc-options {
-            display: flex;
-        }
-
         .doc-options {
             display: none;
             position: absolute;
@@ -140,33 +136,18 @@
 
         <div class="section">
             <div class="section-title">Documents</div>
-            <p class="document">Curriculum Vitae
+            <p class="document" onclick="toggleOptions(this)">Curriculum Vitae
                 <span class="doc-options">
                     <a href="cv.pdf" download>Download</a>
                     <a href="#" onclick="openPDF('cv.pdf')">Display</a>
                 </span>
             </p>
-            <p class="document">Thesis
+            <p class="document" onclick="toggleOptions(this)">Thesis
                 <span class="doc-options">
                     <a href="thesis.pdf" download>Download</a>
                     <a href="#" onclick="openPDF('thesis.pdf')">Display</a>
                 </span>
             </p>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Projects</div>
-            <p>Machine Learning Research</p>
-            <p>Neural Networks</p>
-            <p>Data Engineering</p>
-            <p>AI & Optimization</p>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Contact</div>
-            <p>Contact: panos.kabasis@example.com | +30 123 456 7890</p>
-            <p>GitHub: <a href="https://github.com/upbash" target="_blank">github.com/upbash</a></p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/panos-kabasis" target="_blank">linkedin.com/in/panos-kabasis</a></p>
         </div>
     </div>
 
@@ -183,6 +164,37 @@
             document.getElementById("pdfViewer").style.display = "none";
             document.getElementById("pdfFrame").src = "";
         }
+
+        function toggleOptions(element) {
+            let options = element.querySelector(".doc-options");
+            options.style.display = options.style.display === "flex" ? "none" : "flex";
+        }
+
+        // Math Equations Generator
+        const canvas = document.getElementById("mathCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let equations = ["∫ f(x) dx", "E = mc²", "π ≈ 3.1416", "a² + b² = c²", "∂/∂x", "lim x→∞", "∂u/∂t = Δu + u - u³ (Allen-Cahn)", "y = Wx + b", "model.fit(X, y)", "loss.backward()"];
+        function drawEquation(equation, x, y) {
+            let index = 0;
+            ctx.font = "16px Times New Roman";
+            function drawCharacter() {
+                if (index < equation.length) {
+                    ctx.fillText(equation[index], x + index * 10, y);
+                    index++;
+                    setTimeout(drawCharacter, 50);
+                }
+            }
+            drawCharacter();
+        }
+        function drawRandomMath() {
+            let x = Math.random() * (canvas.width - 200);
+            let y = Math.random() * (canvas.height - 50) + 30;
+            let equation = equations[Math.floor(Math.random() * equations.length)];
+            drawEquation(equation, x, y);
+        }
+        setInterval(drawRandomMath, 3000);
     </script>
 </body>
 </html>
