@@ -14,6 +14,12 @@
             text-align: left;
             position: relative;
             overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .content {
+            width: 65%;
         }
 
         header {
@@ -22,6 +28,17 @@
             text-transform: uppercase;
             border-bottom: 5px solid black;
             margin-bottom: 40px;
+        }
+
+        .profile-pic {
+            width: 30%;
+            text-align: center;
+        }
+        .profile-pic img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .section {
@@ -37,8 +54,7 @@
             margin-bottom: 20px;
         }
 
-        .download-links a, .project-list p {
-            display: block;
+        .document {
             font-size: 2rem;
             font-weight: bold;
             text-decoration: none;
@@ -46,130 +62,120 @@
             margin: 10px 0;
             border-bottom: 2px solid black;
             width: max-content;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
         }
 
-        .download-links a:hover, .project-list p:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        .document:hover .doc-options {
+            display: flex;
         }
 
-        .contact-info {
-            font-size: 1.5rem;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 3px solid black;
-        }
-
-        /* Canvas Background for Mathematical Doodles */
-        #mathCanvas {
-            position: fixed;
-            top: 0;
+        .doc-options {
+            display: none;
+            position: absolute;
+            top: 30px;
             left: 0;
+            flex-direction: column;
+            gap: 5px;
+            background: white;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .doc-options a {
+            text-decoration: none;
+            color: black;
+            font-size: 1.5rem;
+            padding: 5px 10px;
+        }
+
+        .pdf-viewer {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 80%;
+            height: 80%;
+            background: white;
+            border: 2px solid black;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            z-index: 1000;
+        }
+        .pdf-viewer iframe {
             width: 100%;
-            height: 100%;
-            z-index: -1;
+            height: 90%;
+        }
+        .close-btn {
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: right;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <canvas id="mathCanvas"></canvas>
-    <header>Panos Kabasis</header>
+    <div class="content">
+        <header>Panos Kabasis</header>
 
-    <div class="section">
-        <div class="section-title">About</div>
-        <p>Data Scientist | AI Researcher | Problem Solver</p>
-        <p>Welcome to my portfolio, where I showcase my research, projects, and technical expertise.</p>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Documents</div>
-        <div class="download-links">
-            <a href="cv.pdf" download>Curriculum Vitae</a>
-            <a href="thesis.pdf" download>Thesis</a>
-            <a href="project1.pdf" download>Project 1</a>
-            <a href="project2.pdf" download>Project 2</a>
+        <div class="section">
+            <div class="section-title">About</div>
+            <p>Data Scientist | AI Researcher | Problem Solver</p>
+            <p>Welcome to my portfolio, where I showcase my research, projects, and technical expertise.</p>
         </div>
-    </div>
 
-    <div class="section">
-        <div class="section-title">Projects</div>
-        <div class="project-list">
+        <div class="section">
+            <div class="section-title">Documents</div>
+            <p class="document">Curriculum Vitae
+                <span class="doc-options">
+                    <a href="cv.pdf" download>Download</a>
+                    <a href="#" onclick="openPDF('cv.pdf')">Display</a>
+                </span>
+            </p>
+            <p class="document">Thesis
+                <span class="doc-options">
+                    <a href="thesis.pdf" download>Download</a>
+                    <a href="#" onclick="openPDF('thesis.pdf')">Display</a>
+                </span>
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Projects</div>
             <p>Machine Learning Research</p>
             <p>Neural Networks</p>
             <p>Data Engineering</p>
             <p>AI & Optimization</p>
         </div>
+
+        <div class="contact-info">
+            <p>Contact: panos.kabasis@example.com | +30 123 456 7890</p>
+            <p>GitHub: <a href="https://github.com/upbash" target="_blank">github.com/upbash</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/panos-kabasis" target="_blank">linkedin.com/in/panos-kabasis</a></p>
+        </div>
     </div>
 
-    <div class="contact-info">
-        <p>Contact: panos.kabasis@example.com | +30 123 456 7890</p>
-        <p>GitHub: <a href="https://github.com/upbash" target="_blank">github.com/upbash</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/panos-kabasis" target="_blank">linkedin.com/in/panos-kabasis</a></p>
+    <div class="profile-pic">
+        <img src="DSC_0124ivol2.jpg" alt="Profile Picture">
+    </div>
+
+    <div class="pdf-viewer" id="pdfViewer">
+        <span class="close-btn" onclick="closePDF()">✖ Close</span>
+        <iframe id="pdfFrame" src=""></iframe>
     </div>
 
     <script>
-        // Doodly Mathematics Background Canvas with Writing and Smooth Fading Effect
-        const canvas = document.getElementById("mathCanvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let equations = [
-            "∫ f(x) dx", "E = mc²", "π ≈ 3.1416", "a² + b² = c²", "∂/∂x", "lim x→∞",
-            "∂u/∂t = Δu + u - u³ (Allen-Cahn)", "y = Wx + b", "model.fit(X, y)", "loss.backward()"
-        ];
-
-        let drawnEquations = [];
-
-        function drawEquation(equation, x, y) {
-            let index = 0;
-            let opacity = 1;
-            ctx.font = "16px Times New Roman";
-            
-            function drawCharacter() {
-                if (index < equation.length) {
-                    ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`;
-                    ctx.fillText(equation[index], x + index * 10, y);
-                    index++;
-                    setTimeout(drawCharacter, 50);
-                } else {
-                    drawnEquations.push({ x, y, equation, opacity: 1, fadeDelay: 8000 });
-                }
-            }
-            drawCharacter();
+        function openPDF(pdfFile) {
+            document.getElementById("pdfViewer").style.display = "block";
+            document.getElementById("pdfFrame").src = pdfFile;
         }
-
-        function fadeEquations() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawnEquations.forEach((eq, i) => {
-                if (eq.fadeDelay > 0) {
-                    eq.fadeDelay -= 50;
-                } else {
-                    eq.opacity -= 0.01;
-                }
-                ctx.fillStyle = `rgba(0, 0, 0, ${eq.opacity})`;
-                ctx.fillText(eq.equation, eq.x, eq.y);
-                if (eq.opacity <= 0) {
-                    drawnEquations.splice(i, 1);
-                }
-            });
+        function closePDF() {
+            document.getElementById("pdfViewer").style.display = "none";
+            document.getElementById("pdfFrame").src = "";
         }
-
-        function drawRandomMath() {
-            let x = Math.random() * (canvas.width - 200);
-            let y = Math.random() * (canvas.height - 50) + 30;
-            let equation = equations[Math.floor(Math.random() * equations.length)];
-            drawEquation(equation, x, y);
-        }
-
-        setInterval(drawRandomMath, 3000);
-        setInterval(fadeEquations, 50);
-
-        window.addEventListener("resize", () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
     </script>
 </body>
 </html>
