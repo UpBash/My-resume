@@ -109,26 +109,55 @@
     </div>
 
     <script>
-        // Doodly Mathematics Background Canvas
+        // Doodly Mathematics Background Canvas with Writing Effect
         const canvas = document.getElementById("mathCanvas");
         const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
-        function drawRandomMath() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(0,0,0,0.3)";
+
+        let equations = [
+            "∫ f(x) dx", "E = mc²", "π ≈ 3.1416", "a² + b² = c²", "∂/∂x", "lim x→∞",
+            "∂u/∂t = Δu + u - u³ (Allen-Cahn)", "y = Wx + b", "model.fit(X, y)", "loss.backward()"
+        ];
+
+        function drawEquation(equation, x, y) {
+            let index = 0;
+            ctx.fillStyle = "rgba(0,0,0,0.5)";
             ctx.font = "16px Times New Roman";
             
-            for (let i = 0; i < 30; i++) {
-                let x = Math.random() * canvas.width;
-                let y = Math.random() * canvas.height;
-                let equations = ["∫ f(x) dx", "E = mc²", "π ≈ 3.1416", "a² + b² = c²", "∂/∂x", "lim x→∞"];
-                let equation = equations[Math.floor(Math.random() * equations.length)];
-                ctx.fillText(equation, x, y);
+            function drawCharacter() {
+                if (index < equation.length) {
+                    ctx.fillText(equation[index], x + index * 10, y);
+                    index++;
+                    setTimeout(drawCharacter, 50);
+                } else {
+                    setTimeout(() => fadeEquation(x, y, equation.length * 10), 1500);
+                }
             }
+            drawCharacter();
         }
-        
+
+        function fadeEquation(x, y, width) {
+            let opacity = 1;
+            function fade() {
+                ctx.clearRect(x, y - 16, width, 20);
+                ctx.fillStyle = `rgba(0,0,0,${opacity})`;
+                ctx.fillText(" ", x, y);
+                opacity -= 0.05;
+                if (opacity > 0) {
+                    setTimeout(fade, 50);
+                }
+            }
+            fade();
+        }
+
+        function drawRandomMath() {
+            let x = Math.random() * (canvas.width - 200);
+            let y = Math.random() * (canvas.height - 50) + 30;
+            let equation = equations[Math.floor(Math.random() * equations.length)];
+            drawEquation(equation, x, y);
+        }
+
         setInterval(drawRandomMath, 3000);
         window.addEventListener("resize", () => {
             canvas.width = window.innerWidth;
